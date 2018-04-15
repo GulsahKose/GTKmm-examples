@@ -13,6 +13,10 @@ public:
 protected:
   //Signal handlers:
   void on_button_clicked();
+  void button_pressed();
+  void button_released();
+  void enter_notify();
+  void leave_notify();
 
   //Child widgets:
   Gtk::Button m_button;
