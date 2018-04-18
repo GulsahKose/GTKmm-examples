@@ -1,27 +1,35 @@
 #include "radiobutton.h"
 #include <iostream>
+using std::cout;
+using std::endl;
 
-RadioButton::RadioButton()
+RadioButton::RadioButton():
+    m_Box(Gtk::ORIENTATION_VERTICAL),
+    m_RadioButton1("button1"),
+    m_RadioButton2("button2"),
+    m_RadioButton3("button3")
 {
+
+    m_RadioButton2.join_group(m_RadioButton1);
+    m_RadioButton3.join_group(m_RadioButton1);
+
     set_title("radiobutton example");
 
-    m_rb1.signal_clicked().connect( sigc::mem_fun(*this,
-                &RadioButton::on_button_clicked) );
+    m_Box.set_margin_top(20);
+    m_Box.set_margin_bottom(20);
+    m_Box.set_margin_left(20);
+    m_Box.set_margin_right(20);
 
+    // Put the radio buttons in Box:
+    m_Box.pack_start(m_RadioButton1);
+    m_Box.pack_start(m_RadioButton2);
+    m_Box.pack_start(m_RadioButton3);
 
-  Gtk::RadioButton::Group group;
-  Gtk::RadioButton* m_rb1 = Gtk::manage(new Gtk::RadioButton(group, "button1"));
-  Gtk::RadioButton* m_rb2 = Gtk::manage(new Gtk::RadioButton(group, "button2"));
-  Gtk::RadioButton* m_rb3 = Gtk::manage(new Gtk::RadioButton(group, "button3"));
+    add(m_Box);
 
     show_all_children();
 }
 
 RadioButton::~RadioButton()
 {
-}
-
-void RadioButton::on_button_clicked()
-{
-    std::cout << "The Button was clicked." << std::endl;
 }

@@ -1,4 +1,5 @@
 #include <gtkmm/window.h>
+#include <gtkmm/box.h>
 #include <gtkmm/radiobutton.h>
 
 class RadioButton : public Gtk::Window
@@ -8,9 +9,7 @@ public:
   virtual ~RadioButton();
 
 protected:
-  //Signal handlers:
-  void on_button_clicked();
-
   //Child widgets:
-  Gtk::RadioButton m_rb1, m_rb2, m_rb3;
+  Gtk::Box m_Box;
+  Gtk::RadioButton m_RadioButton1, m_RadioButton2, m_RadioButton3;
 };
